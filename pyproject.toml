@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "claude-usage-tray"
+version = "0.1.0"
+description = "System tray rings showing your Claude Code 5-hour session and weekly usage limits."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.9"
+dependencies = [
+    "pystray>=0.19",
+    "Pillow>=9.0",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: MacOS",
+    "Operating System :: POSIX :: Linux",
+    "Environment :: Win32 (MS Windows)",
+    "Environment :: MacOS X",
+    "Environment :: X11 Applications",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7"]
+
+[project.scripts]
+claude-usage-tray = "claude_usage_tray.cli:main"
+
+[project.gui-scripts]
+claude-usage-tray-gui = "claude_usage_tray.cli:run_gui"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

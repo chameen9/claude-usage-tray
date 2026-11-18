@@ -19,7 +19,7 @@ Hover for the exact percentage and time until reset. Right-click for details.
 
 ## Install
 
-Needs Python 3.9+ and [pipx](https://pipx.pypa.io/).
+Needs Python 3.10+ and [pipx](https://pipx.pypa.io/).
 
 ```sh
 pipx install git+https://github.com/chameen9/claude-usage-tray

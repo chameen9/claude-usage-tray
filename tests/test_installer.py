@@ -28,6 +28,14 @@ def test_wrap_saves_original_and_keeps_other_settings():
     assert backup is not None and backup.exists()
 
 
+def test_non_ascii_settings_are_written_as_is():
+    write_settings({"note": "café — ✓", "statusLine": ORIGINAL})
+    installer.wrap_statusline()
+    text = paths.settings_file().read_text(encoding="utf-8")
+    assert "café — ✓" in text
+    assert "\\u" not in text
+
+
 def test_reinstall_does_not_overwrite_saved_original():
     write_settings({"statusLine": ORIGINAL})
     installer.wrap_statusline()

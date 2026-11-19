@@ -26,7 +26,7 @@ def write_json_atomic(path: Path, data: Any, indent: Optional[int] = None) -> No
     fd, tmp = tempfile.mkstemp(prefix=path.name + ".", suffix=".tmp", dir=str(path.parent))
     try:
         with os.fdopen(fd, "w", encoding="utf-8") as f:
-            json.dump(data, f, indent=indent)
+            json.dump(data, f, indent=indent, ensure_ascii=False)
             if indent:
                 f.write("\n")
         os.replace(tmp, path)
